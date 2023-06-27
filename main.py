@@ -1,5 +1,5 @@
 import mysql.connector
-#from streamlit_option_menu import option_menu
+from streamlit_option_menu import option_menu
 import streamlit as st
 import pymysql
 # import sqlalchemy
@@ -7,7 +7,7 @@ import pymysql
 from phonepe2 import *
 
 
-# export GIT_PYTHON_REFRESH=quiet
+# Connection to SQL
 from sqlalchemy import create_engine, text
 engine1 = create_engine("mysql+pymysql://{user}:{pw}@localhost"
                        .format(user="root",
@@ -57,14 +57,12 @@ SELECT = option_menu(
 
 if SELECT == "Home":
     col1, col2, = st.columns(2)
-    # col1.image(Image.open("C:/Users/omkar/Downloads/phonepe photo/phonepe.png"), width=500)
     with col1:
         st.subheader(
             "PhonePe  is an Indian digital payments and financial technology company headquartered in Bengaluru, Karnataka, India. PhonePe was founded in December 2015, by Sameer Nigam, Rahul Chari and Burzin Engineer. The PhonePe app, based on the Unified Payments Interface (UPI), went live in August 2016. It is owned by Flipkart, a subsidiary of Walmart.")
         st.download_button("DOWNLOAD THE APP NOW", "https://www.phonepe.com/app-download/")
     with col2:
         col2.write("This is column1 of Home page")
-        # st.video("C:/Users/omkar/Downloads/phonepe photo/upi.mp4")
 
 if SELECT == "Insights":
     st.title("BASIC INSIGHTS")
