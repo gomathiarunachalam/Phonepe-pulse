@@ -16,8 +16,6 @@ connection = engine1.connect()
 # Execute the SQL query
 query = text("SHOW DATABASES;")
 result = connection.execute(query)
-# existing_databases = connection.execute("SHOW DATABASES;")
-# Results are a list of single item tuples, so unpack each tuple
 # Fetch the query result
 databases = result.fetchall()
 existing_databases = [d[0] for d in databases]
