@@ -1,36 +1,20 @@
-# !pip install GitPython
-# export GIT_PYTHON_REFRESH=quiet
 import os
 import requests
 import subprocess
 
 # Clone the Github repository
 os.system("git clone https://github.com/PhonePe/pulse.git")
-# repo = response.json()
-# clone_url = repo['clone_url']
-#CLONING TH PHONEPE--PULSE GITHUB REPOSITORY
-
-# response = requests.get('https://api.github.com/repos/PhonePe/pulse')
-# repo = response.json()
-# clone_url = repo['clone_url']
-
-#DIRECTING THE REPOSITORY TO THE LOCAL DIRECTORY
-
-# repo_name = "pulse"
-# clone_dir = os.path.join(os.getcwd(), repo_name)
-# subprocess.run(["git", "clone", clone_url, clone_dir], check=True)
 
 import json
 import pandas as pd
 
-# root_dir = (r'/content/pulse/data')
+# root_dir for AGGREGATED TRANSACTION
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data'
 
 # Initialize empty list to hold dictionaries of data for each JSON file
 data_list = []
 
 # Loop over all the state folders
-# for state_dir in os.listdir(os.path.join(root_dir, '/content/pulse/data/aggregated/transaction/country/india/state')):
 for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data\aggregated\transaction\country\india\state')):
     state_path = os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data\aggregated\transaction\country\india\state', state_dir)
     if os.path.isdir(state_path):
@@ -46,7 +30,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
                         with open(os.path.join(year_path, json_file)) as f:
                             data = json.load(f)
 
-                            # Extract the data we're interested in
+                            # Extract the data 
                             for transaction_data in data['data']['transactionData']:
                                 row_dict = {
                                     'State': state_dir,
@@ -62,11 +46,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
 df1 = pd.DataFrame(data_list)
 df1
 
-import os
-import json
-import pandas as pd
-
-# root_dir = '/content/pulse/data/aggregated/user/country/india/state'
+# root_dir for AGGREGATED USER
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data\aggregated\user\country\india\state'
 df2_list = []
 
@@ -88,12 +68,7 @@ for state_dir in os.listdir(root_dir):
 df2 = pd.DataFrame(data_list)
 
 df2
-
-import os
-import json
-import pandas as pd
-
-# root_dir = (r'/content/pulse/data')
+# root_dir for MAP TANSACTION
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data'
 # Initialize empty list to hold dictionaries of data for each JSON file
 data_list = []
@@ -114,7 +89,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
                         with open(os.path.join(year_path, json_file)) as f:
                             data = json.load(f)
 
-                            # Extract the data we're interested in
+                            # Extract the data
                             for hoverDataList in data['data']['hoverDataList']:
                                 row_dict = {
                                     'State': state_dir,
@@ -130,11 +105,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
 df3 = pd.DataFrame(data_list)
 
 df3
-
-import os
-import json
-import pandas as pd
-
+#root_dir for MAP USER
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data\map\user\hover\country\india\state'
 
 # Initialize empty list to hold dictionaries of data for each JSON file
@@ -156,7 +127,7 @@ for state_dir in os.listdir(root_dir):
                         with open(os.path.join(year_path, json_file)) as f:
                             data = json.load(f)
 
-                            # Extract the data we're interested in
+                            # Extract the data 
                             for district, values in data['data']['hoverData'].items():
                                 row_dict = {
                                     'State': state_dir,
@@ -171,12 +142,7 @@ for state_dir in os.listdir(root_dir):
 df4 = pd.DataFrame(data_list)
 
 df4
-
-import os
-import json
-import pandas as pd
-
-# root_dir = (r'/content/pulse/data')
+#root_dir for TOP TRANSACTION
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data'
 
 # Initialize empty list to hold dictionaries of data for each JSON file
@@ -198,7 +164,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
                         with open(os.path.join(year_path, json_file)) as f:
                             data = json.load(f)
 
-                            # Extract the data we're interested in
+                            # Extract the data 
                             for districts in data['data']['districts']:
                                 row_dict = {
                                     'State': state_dir,
@@ -215,12 +181,7 @@ for state_dir in os.listdir(os.path.join(root_dir, r'C:\Users\Vijay Anand\OneDri
 df5 = pd.DataFrame(data_list)
 
 df5
-
-import os
-import json
-import pandas as pd
-
-# root_dir = '/content/pulse/data/top/user/country/india/state'
+# root_dir for TOP USER
 root_dir = r'C:\Users\Vijay Anand\OneDrive\Desktop\pulse-master\pulse-master\data\top\user\country\india\state'
 
 # Initialize empty list to hold dictionaries of data for each JSON file
@@ -242,7 +203,7 @@ for state_dir in os.listdir(root_dir):
                         with open(os.path.join(year_path, json_file)) as f:
                             data = json.load(f)
 
-                            # Extract the data we're interested in
+                            # Extract the data 
                             for district in data['data']['districts']:
                                 row_dict = {
                                     'State': state_dir,
@@ -292,5 +253,3 @@ d3.to_csv('map_tran.csv', index=False)
 d4.to_csv('map_user.csv', index=False)
 d5.to_csv('top_tran.csv', index=False)
 d6.to_csv('top_user.csv', index=False)
-
-# Agg_trans = pd.read_csv(r'/content/agg_trans.csv')
